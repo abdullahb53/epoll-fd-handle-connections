@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"sync"
 	"syscall"
 )
 
 type Pool struct {
+	mu   sync.RWMutex
 	work chan func()
 	cls  chan struct{}
 }
